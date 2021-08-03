@@ -10,6 +10,8 @@ import UIKit
 
 class PhotosCollectionViewController: UICollectionViewController {
     
+    let photos = ["cat2", "cat3", "cat4", "notcat", "cat5", "cat6", "cat7", "cat8", "cat9", "cat10", "cat11", "cat12", "cat13", "cat14"]
+    
     let itemsPerRow: CGFloat = 3
     let sectionInserts = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
 
@@ -36,13 +38,16 @@ class PhotosCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return photos.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCell
         
-        cell.backgroundColor = .black
+        let imageName = photos[indexPath.item]
+        let image = UIImage(named: imageName)
+        
+        cell.catImageView.image = image
     
         return cell
     }
