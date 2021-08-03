@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,21 +18,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Dv9-9E-ees">
-                            <size key="itemSize" width="89" height="89"/>
+                            <size key="itemSize" width="57" height="63"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="tSK-DC-uem" customClass="PhotoCell" customModule="PhotoTapps" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="89" height="89"/>
+                                <rect key="frame" x="0.0" y="0.0" width="57" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1Kl-Eh-GQ3">
-                                    <rect key="frame" x="0.0" y="0.0" width="89" height="89"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="57" height="63"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cat12" translatesAutoresizingMaskIntoConstraints="NO" id="Sp6-Xw-6Lb">
-                                            <rect key="frame" x="0.0" y="0.0" width="89" height="89"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="57" height="63"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
@@ -41,9 +42,10 @@
                                         <constraint firstItem="Sp6-Xw-6Lb" firstAttribute="top" secondItem="1Kl-Eh-GQ3" secondAttribute="top" id="r95-HW-nfe"/>
                                     </constraints>
                                 </collectionViewCellContentView>
-                                <size key="customSize" width="89" height="89"/>
+                                <size key="customSize" width="57" height="63"/>
                                 <connections>
                                     <outlet property="catImageView" destination="Sp6-Xw-6Lb" id="mDo-ya-6mF"/>
+                                    <segue destination="Dht-Jr-xsh" kind="presentation" identifier="pickPhotoSegue" id="U4t-2Y-Rzp"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -57,6 +59,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nA5-Ko-fci" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="730.43478260869574" y="112.5"/>
+        </scene>
+        <!--Photo View Controller-->
+        <scene sceneID="r5c-wA-fvh">
+            <objects>
+                <viewController id="Dht-Jr-xsh" customClass="PhotoViewController" customModule="PhotoTapps" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Q4v-9o-wsq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U6M-1A-oJv">
+                                <rect key="frame" x="0.0" y="289" width="414" height="264"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="264" id="Q7N-8O-hli"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vY-ek-K8Q">
+                                <rect key="frame" x="144.5" y="750" width="125" height="22"/>
+                                <color key="tintColor" systemColor="systemBackgroundColor"/>
+                                <state key="normal" title=" Tap to Share" image="square.and.arrow.up" catalog="system">
+                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareAction:" destination="Dht-Jr-xsh" eventType="touchUpInside" id="vbe-0w-CFO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="GHm-o4-Xl9"/>
+                        <color key="backgroundColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="U6M-1A-oJv" firstAttribute="centerY" secondItem="Q4v-9o-wsq" secondAttribute="centerY" id="54e-oB-Mzc"/>
+                            <constraint firstItem="GHm-o4-Xl9" firstAttribute="trailing" secondItem="U6M-1A-oJv" secondAttribute="trailing" id="DeE-66-A8i"/>
+                            <constraint firstItem="U6M-1A-oJv" firstAttribute="leading" secondItem="GHm-o4-Xl9" secondAttribute="leading" id="NZT-dd-xxr"/>
+                            <constraint firstItem="5vY-ek-K8Q" firstAttribute="centerX" secondItem="Q4v-9o-wsq" secondAttribute="centerX" id="bAp-71-q5F"/>
+                            <constraint firstItem="GHm-o4-Xl9" firstAttribute="bottom" secondItem="5vY-ek-K8Q" secondAttribute="bottom" constant="36" id="ejI-YW-g3o"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="photoImageView" destination="U6M-1A-oJv" id="jdt-0P-4p3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IcA-f5-noA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1592.753623188406" y="121.875"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KIP-bf-na8">
@@ -78,7 +123,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="cat12" width="664" height="1182"/>
+        <image name="cat12" width="188" height="333"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

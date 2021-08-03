@@ -28,7 +28,13 @@ class PhotosCollectionViewController: UICollectionViewController {
 //        collectionView.showsVerticalScrollIndicator = false
 
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "pickPhotoSegue" { }
+        let photoVC = segue.destination as! PhotoViewController
+        let cell = sender as! PhotoCell
+        photoVC.image = cell.catImageView.image
+    }
 
     // MARK: UICollectionViewDataSource
 
